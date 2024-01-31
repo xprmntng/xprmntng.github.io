@@ -111,6 +111,7 @@ function pickNextWord() {
     userWord = '';
     currentSpaceIndex = 0;
     currentSpace = letterSpaces[0];
+    $('#keyboard > div > a').removeClass('good').removeClass('almost').removeClass('wrong');
 }
 
 function checkWord() {
