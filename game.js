@@ -12,6 +12,7 @@ let userWord = "";
 let remainingWords;
 
 let debug;
+const SHOW_DEBUG = false;
 
 const LETTER_REGEX = /^[a-zA-Z]$/
 
@@ -25,6 +26,7 @@ $(function() {
         }
     }
     remainingWords = [...WORD_LIST];
+    debug = $("#debug-console");
     pickNextWord();
 
     $('#keyboard > div > a').click(function() {
@@ -40,8 +42,6 @@ $(function() {
             LETTER_KEY_MAP.set(keyText, element);
         }
     });
-    // debug = $("#debug-console");
-    // debug.text(word);
 });
 
 $(document).on('keypress', function(ev) {
@@ -76,7 +76,6 @@ function processKey(key) {
             checkState = false;
             col--;
             userWord = userWord.slice(0, -1);
-            ev.preventDefault();
         }
     } else if (key == 'Enter') {
         if (checkState) {
@@ -92,9 +91,10 @@ function processKey(key) {
     }
 }
 
-$(document).on('keyup', function(ev) {
+$(document).on('keydown', function(ev) {
     if (ev.key == 'Backspace' || ev.key == "Delete") {
         processKey('Backspace');
+        ev.preventDefault();
     }
 });
 
@@ -112,6 +112,10 @@ function pickNextWord() {
     currentSpaceIndex = 0;
     currentSpace = letterSpaces[0];
     $('#keyboard > div > a').removeClass('good').removeClass('almost').removeClass('wrong');
+    $('.message').remove();
+    if (SHOW_DEBUG) {
+        debug.text(word);
+    }
 }
 
 function checkWord() {
@@ -134,32 +138,39 @@ function checkWord() {
     if (remainingUserLetters.length == 0) {
         winState = true;
         gameOver = true;
+        $('main').append('<div class="happy message top">Good job!</div>');
+        setTimeout(function() {
+            $('.top').toggleClass('top')
+        }, 100);
         return;
     }
     for (let i = 0; i < remainingUserLetters.length; i++) {
         let letter = remainingUserLetters[i][0];
         let location = remainingUserLetters[i][1];
         let indexOf = remainingAnswerLetters.indexOf(letter);
+        let keyboardLetter = LETTER_KEY_MAP.get(letter);
         if (indexOf >= 0) {
             let tmp = remainingAnswerLetters.slice(0, indexOf);
             tmp.push(...remainingAnswerLetters.slice(indexOf+1));
             remainingAnswerLetters = tmp;
             $('#' + row + location).addClass('almost');
-            if (!LETTER_KEY_MAP.get(userWord[i]).hasClass('good')) {
-                LETTER_KEY_MAP.get(userWord[i]).attr('class', 'almost');
+            if (!keyboardLetter.hasClass('good')) {
+                keyboardLetter.attr('class', 'almost');
             }
         } else {
             $('#' + row + location).addClass('wrong');
-
-            if (!LETTER_KEY_MAP.get(userWord[i]).hasClass('good') 
-                    && !LETTER_KEY_MAP.get(userWord[i]).hasClass('almost')) {
-                LETTER_KEY_MAP.get(userWord[i]).attr('class', 'wrong');
+            if (!keyboardLetter.hasClass('good') && !keyboardLetter.hasClass('almost')) {
+                keyboardLetter.attr('class', 'wrong');
             }
         }
     }
     row++;
     if (row == 6) {
         gameOver = true;
+        $('main').append(`<div class="sad message">Answer: ${word}</div>`);
+        setTimeout(function() {
+            $('.top').toggleClass('top')
+        }, 100);
         return;
     }
     col = 0;

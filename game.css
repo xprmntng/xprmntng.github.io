@@ -55,21 +55,28 @@ h1 {
   color: var(--font-color);
   position: relative;
   user-select: none;
+  animation-fill-mode: forwards;
 }
 
 .letter.almost {
-  background-color: hsl(35, 34%, 60%);
+  /* background-color: hsl(35, 34%, 60%); */
   border: none;
+  animation: rotate-almost .2s;
+  animation-fill-mode: forwards;
 }
 
 .letter.good {
-  background-color: hsl(120, 33%, 45%);
+  /* background-color: hsl(120, 33%, 45%); */
   border: none;
+  animation: rotate-good .2s;
+  animation-fill-mode: forwards;
 }
 
 .letter.wrong {
-  background-color: #333;
+  /* background-color: #333; */
   border: none;
+  animation: rotate-wrong .2s;
+  animation-fill-mode: forwards;
 }
 
 p#debug-console {
@@ -122,4 +129,109 @@ p#debug-console {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#debug-console {
+  text-align: center;
+  color: white;
+  font-size: .6rem;
+  font-family: monospace;
+}
+
+.message {
+  font-size: .6rem;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  padding: .5rem;
+  margin: 0 auto;
+  top: 7rem;
+  left: 0;
+  right: 0;
+  width: 8rem;
+  display: block;
+  position: absolute;
+  z-index: 100;
+  border-radius: 3px;
+  box-shadow: 0 1rem 1rem #00000088;
+  transition: top .3s;
+}
+
+.top {
+  top: -3rem;
+}
+
+.happy {
+  background-color: hsl(120, 33%, 45%);
+}
+
+.sad {
+  background-color: hsl(0, 77.4%, 32.9%);
+}
+
+@keyframes rotate-good {
+  0% { 
+    transform: rotate3d(0);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  51% { 
+    background-color: hsl(120, 33%, 45%);
+    transform: rotate3d(0, 1, 0, 270deg);
+  }
+  100% {
+    background-color: hsl(120, 33%, 45%);
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+@keyframes rotate-almost {
+  0% { 
+    transform: rotate3d(0);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  51% { 
+    background-color: hsl(35, 34%, 60%);
+    transform: rotate3d(0, 1, 0, 270deg);
+  }
+  100% {
+    background-color: hsl(35, 34%, 60%);
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+@keyframes rotate-wrong {
+  0% { 
+    transform: rotate3d(0);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  51% { 
+    background-color: #333;
+    transform: rotate3d(0, 1, 0, 270deg);
+  }
+  100% { 
+    background-color: #333;
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+.letter:nth-of-type(2) {
+  animation-delay: .1s;
+}
+
+.letter:nth-of-type(3) {
+  animation-delay: .2s;
+}
+
+.letter:nth-of-type(4) {
+  animation-delay: .3s;
+}
+
+.letter:nth-of-type(5) {
+  animation-delay: .4s;
 }
