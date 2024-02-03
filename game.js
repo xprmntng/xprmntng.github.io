@@ -56,6 +56,7 @@ $(document).on('keypress', function(ev) {
 });
 
 function processKey(key) {
+    $('.message').remove();
     if (key.length == 1) {
         if (col < 5 && currentSpaceIndex < letterSpaces.length) {
             key = key.toUpperCase();
@@ -121,6 +122,10 @@ function pickNextWord() {
 function checkWord() {
     let checkWord = userWord.toLowerCase();
     if (!GUESSABLE_WORDS.includes(checkWord)) {
+        $('main').append(`<div class="warning message top">${userWord} is not a word!</div>`);
+        setTimeout(function() {
+            $('.top').toggleClass('top')
+        }, 100);
         return;
     }
     userWord = userWord.toUpperCase();

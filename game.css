@@ -172,6 +172,10 @@ p#debug-console {
   background-color: hsl(0, 77.4%, 32.9%);
 }
 
+.warning {
+  background-color: hsl(35, 34%, 60%);
+}
+
 @keyframes rotate-good {
   0% { 
     transform: rotate3d(0);
