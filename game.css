@@ -108,6 +108,9 @@ p#debug-console {
   padding: .5rem .4rem;
   border-radius: 3px;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #keyboard > div > a.good {
@@ -234,4 +237,32 @@ p#debug-console {
 
 .letter:nth-of-type(5) {
   animation-delay: .4s;
+}
+
+@media only screen and (max-width: 512px) {
+  html {
+    font-size: 10vw;
+  }
+  h1 {
+    font-size: .5rem;
+  }
+  #keyboard > div > a {
+    padding: 0;
+    width: .9rem;
+    height: 2rem;
+    font-size: .5rem;
+  }
+
+  #keyboard > div > a.fixed-width {
+    width: 1.4rem;
+    font-size: .3rem !important;
+  }
+}
+
+#keyboard > div {
+  gap: .1rem;
+}
+
+#keyboard {
+  gap: .1rem;
 }
