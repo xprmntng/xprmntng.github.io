@@ -269,4 +269,8 @@ p#debug-console {
   #keyboard {
     gap: .1rem;
   }
+
+  header {
+    padding: 3px;
+  }
 }
