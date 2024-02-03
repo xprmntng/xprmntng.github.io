@@ -257,12 +257,12 @@ p#debug-console {
     width: 1.4rem;
     font-size: .3rem !important;
   }
-}
 
-#keyboard > div {
-  gap: .1rem;
-}
+  #keyboard > div {
+    gap: .1rem;
+  }
 
-#keyboard {
-  gap: .1rem;
+  #keyboard {
+    gap: .1rem;
+  }
 }
