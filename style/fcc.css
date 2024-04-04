@@ -37,7 +37,7 @@ head {
 header {
     background-color: #00529b;
     /* background-image: linear-gradient(to right, #003869, #00529b, #003869); */
-    background-image: linear-gradient(to top, hsl(71, 28%, 20%), hsl(71, 28%, 15%));
+    background-image: linear-gradient(to top, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%));
     /* color: #fff9ea; */
     color: #f4b829;
     font-family: MonteCarlo;
