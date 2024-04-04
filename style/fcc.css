@@ -54,7 +54,7 @@ header > header-est {
     /* position: absolute; */
     right: 0;
     top: 0;
-    font-size: 1rem;
+    font-size: .75rem;
     font-family: Comme;
     z-index: 2;
     display: flex;
