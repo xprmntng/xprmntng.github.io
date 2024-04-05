@@ -37,7 +37,8 @@ head {
 header {
     background-color: #00529b;
     /* background-image: linear-gradient(to right, #003869, #00529b, #003869); */
-    background-image: linear-gradient(to top, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%));
+    background-image: radial-gradient(circle, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%));
+    /* background-image: linear-gradient(to top, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%)); */
     /* color: #fff9ea; */
     color: #f4b829;
     font-family: MonteCarlo;
@@ -75,7 +76,37 @@ nav {
     position: sticky;
     top: 0;
     z-index: 2;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.383);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+nav > drop-menu {
+    height: 100%;
+    position: relative;
+}
+
+nav > drop-menu > a {
+    border-bottom: 2px solid grey;
+    height: 100%;
+}
+
+nav > drop-menu > menu-items {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    white-space: nowrap;
+    background-color: white;
+    gap: .5rem;
+    padding: 1rem;
+    left: -1rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .3);
+    background-image: linear-gradient(to bottom, white, #eee);
+    min-width: calc(100% + 2rem);
+}
+
+nav > drop-menu:hover > menu-items {
+    display: flex;
 }
 
 body > img {
