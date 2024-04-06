@@ -40,6 +40,7 @@ header {
     background-image: radial-gradient(circle, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%));
     /* background-image: linear-gradient(to top, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%)); */
     /* color: #fff9ea; */
+    /* color: white; */
     color: #f4b829;
     font-family: MonteCarlo;
     font-size: 3rem;
@@ -51,6 +52,8 @@ header {
 }
 
 header > header-est {
+    /* color: #f4b829; */
+    color: white;
     height: 100%;
     /* position: absolute; */
     right: 0;
@@ -67,6 +70,7 @@ header > header-est {
 
 nav {
     background-color: white;
+    background-image: linear-gradient(to right, #ccc, #ffffff 5%, #ffffff 95%, #ccc);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -85,8 +89,22 @@ nav > drop-menu {
 }
 
 nav > drop-menu > a {
-    border-bottom: 2px solid grey;
+    /* border-bottom: 2px solid grey; */
     height: 100%;
+    position: relative;
+    /* background-color: #eee;
+     */
+     /* background-image: linear-gradient(to bottom, white, #eee); */
+}
+
+nav > drop-menu > a::after {
+    content: url(expand.png);
+    position: absolute;
+    top: calc(100% - .25rem);
+    width: 1rem;
+    height: 1rem;
+    left: calc(50% - .5rem);
+    opacity: .15;
 }
 
 nav > drop-menu > menu-items {
@@ -97,7 +115,7 @@ nav > drop-menu > menu-items {
     z-index: 2;
     white-space: nowrap;
     background-color: white;
-    gap: .5rem;
+    gap: 1rem;
     padding: 1rem;
     left: -1rem;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, .3);
@@ -114,9 +132,10 @@ body > img {
 }
 
 main {
-    padding: 4rem;
+    padding: 4rem 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     color: #444;
     gap: 4rem;
@@ -125,7 +144,61 @@ main {
 main > section {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
+}
+
+main > img-banner {
+    width: 100%;
+    position: relative;
+}
+
+main > img-banner > img {
+    width: 100%;
+}
+
+main > img-banner > blurb-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+}
+
+main > img-banner > blurb-wrapper.left {
+    justify-content: left;
+}
+
+main > img-banner > blurb-wrapper > banner-blurb {
+    /* position: absolute; */
+    right: 0;
+    /* top: calc(50% - 4rem); */
+    /* height: 4rem; */
+    width: 30rem;
+    padding: 1rem 1rem 1rem 2rem;
+    box-shadow: 0rem 1rem 1rem rgba(0, 0, 0, .3);
+    background-color: black;
+    background-image: radial-gradient(circle at left, hsl(71, 28%, 15%), hsl(71, 28%, 7.5%));
+}
+
+main > img-banner > blurb-wrapper.left > banner-blurb {
+    justify-content: left;
+    padding: 1rem 2rem 1rem 1rem;
+    text-align: right;
+}
+
+main > img-banner > blurb-wrapper > banner-blurb > blurb-heading {
+    font-size: 2rem;
+    color: #f4b829;
+    white-space: nowrap;
+}
+
+main > img-banner > blurb-wrapper > banner-blurb > p {
+    color: white;
 }
 
 main > section > h1 {
