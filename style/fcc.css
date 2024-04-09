@@ -29,7 +29,7 @@ head {
 }
 
 :root {
-    font-size: 18px;
+    font-size: 16px;
     font-family: Helvetica, Arial, sans-serif;
     font-family: Comme;
 }
@@ -75,12 +75,16 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    gap: 1.5rem;
+    padding: 0 1rem;
+    /* gap: 1.5rem; */
     position: sticky;
     top: 0;
     z-index: 2;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+nav > a {
+    padding: 1rem .75rem;
 }
 
 nav > drop-menu {
@@ -89,15 +93,16 @@ nav > drop-menu {
 }
 
 nav > drop-menu > a {
-    /* border-bottom: 2px solid grey; */
+    border-bottom: 3px solid grey;
     height: 100%;
     position: relative;
+    padding: 1rem .75rem calc(1rem - 3px) .75rem;
     /* background-color: #eee;
      */
-     /* background-image: linear-gradient(to bottom, white, #eee); */
+     /* background-image: linear-gradient(to top, white, #eee); */
 }
 
-nav > drop-menu > a::after {
+/* nav > drop-menu > a::after {
     content: url(expand.png);
     position: absolute;
     top: calc(100% - .25rem);
@@ -105,7 +110,7 @@ nav > drop-menu > a::after {
     height: 1rem;
     left: calc(50% - .5rem);
     opacity: .15;
-}
+} */
 
 nav > drop-menu > menu-items {
     display: none;
@@ -117,10 +122,15 @@ nav > drop-menu > menu-items {
     background-color: white;
     gap: 1rem;
     padding: 1rem;
-    left: -1rem;
+    left: 0;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, .3);
     background-image: linear-gradient(to bottom, white, #eee);
-    min-width: calc(100% + 2rem);
+    min-width: 100%;
+}
+
+nav > :nth-child(6) ~ drop-menu > menu-items {
+    left: unset;
+    right: 0;
 }
 
 nav > drop-menu:hover > menu-items {
@@ -263,7 +273,11 @@ form > input[type=submit] {
 }
 
 form > input[type=submit]:hover {
-    filter: brightness(1.5);
+    background-image: none;
+    background-color: #f4b829;
+    color: #000;
+    transition: all .2s;
+    /* filter: brightness(1.5); */
     cursor: pointer;
 }
 
