@@ -1,3 +1,3 @@
 [submodule "dijkstra"]
 	path = dijkstra
-	url = git@github.com:xprmntng/i.git
+	url = https://github.com/xprmntng/i-visualization.git
